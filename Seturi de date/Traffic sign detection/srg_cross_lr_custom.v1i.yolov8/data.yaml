@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['crosswalk', 'green', 'left', 'red', 'right', 'stop']
+
+roboflow:
+  workspace: yolo-0ixyz
+  project: srg_cross_lr_custom
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/yolo-0ixyz/srg_cross_lr_custom/dataset/1
