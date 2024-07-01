@@ -16,8 +16,9 @@ import queue
 
 live_stream_url = "http://172.20.10.2:5000"
 
-default_speed = 0.45
-default_turn_gain = 0.3
+default_speed = 0.40
+default_turn_gain = 0.30
+default_offset = 0.02 
 
 crosswalk_speed = 0.3
 crosswalk_turn_gain = 0.15
@@ -118,7 +119,7 @@ def capture_frame_and_control_robot(model, transform, yolo):
     state_right = False
 
     # Variabila pentru offsetul default dintre puterea motorului stang si cel drept
-    offset_value = 0.02
+    offset_value = default_offset
 
     while True:
         start_time = time.time()
@@ -262,9 +263,9 @@ color_list = [(0,0,255), (255,0,0), (0,255,0),  (255, 255, 0), (255, 0, 255), (0
 if __name__ == '__main__':
     model = MobileNetSteering()
     device = torch.device("cpu")
-    model_yolo = YOLO('/Users/bogdandura/Desktop/licenta/PraterBot/12iunie/yolov8n_srg_cross_left_right.pt')
+    model_yolo = YOLO('Modele/yolov8n_srg_cross_left_right_8_iunie.pt')
 
-    checkpoint = torch.load('/Users/bogdandura/Desktop/licenta/PraterBot/12iunie/mobilenet_steering_8iunie.pth', map_location=device)
+    checkpoint = torch.load('Modele/mobilenet_steering_8iunie.pth', map_location=device)
     model.load_state_dict(checkpoint)
 
     model.to(device)
